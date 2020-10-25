@@ -1,4 +1,3 @@
-
 function Juego(){
 	this.partidas={};
 	this.crearPartida=function(num,owner){

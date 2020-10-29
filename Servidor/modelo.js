@@ -387,3 +387,5 @@ function inicio(){
 	}
 }
 
+module.exports.Juego = Juego;
+module.exports.Usuario = Usuario;

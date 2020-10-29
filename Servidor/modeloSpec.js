@@ -1,10 +1,11 @@
+var modelo=require("./modelo.js");
 describe("El juego del impostor", function () {
   var juego;
   var usr;
 
   beforeEach(function () {
-    juego = new Juego();
-    usr = new Usuario("Pepe", juego);
+    juego = new modelo.Juego();
+    usr = new modelo.Usuario("Pepe", juego);
   });
 
   it("comprobar valores iniciales del juego", function () {

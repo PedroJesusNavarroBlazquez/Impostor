@@ -15,9 +15,11 @@ function Juego(){
 	}
 
 	this.unirAPartida=function(codigo,nick){
+		var res = -1;
 		if(this.partidas[codigo]){
-			this.partidas[codigo].agregarUsuario(nick);
+			res = this.partidas[codigo].agregarUsuario(nick);
 		}
+		return res;
 	}
 
 	this.obtenerCodigo=function(){
@@ -48,7 +50,7 @@ function Partida(num,owner, codigo){
 	this.usuarios ={}//version array asociativa
 	this.encargos=["tarea1", "tarea2", "tarea3","tarea4"];
 	this.agregarUsuario=function(nick){
-		this.fase.agregarUsuario(nick,this)
+		return this.fase.agregarUsuario(nick,this)
 	}
 	this.puedeAgregarUsuario=function(nick){
 		let nuevo=nick;
@@ -375,7 +377,7 @@ function randomInt(low, high) {
 	return Math.floor(Math.random() * (high - low) + low);
 }
 
-function inicio(){
+/*function inicio(){
 	juego = new Juego();
 	var usr=new Usuario("pepe");
 	var codigo=juego.crearPartida(4,usr);
@@ -385,7 +387,7 @@ function inicio(){
 		juego.unirAPartida(codigo,"luis");
 		usr.iniciarPartida();
 	}
-}
+}*/
 
 module.exports.Juego = Juego;
 module.exports.Usuario = Usuario;

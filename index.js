@@ -19,7 +19,23 @@ app.get('/', function (request, response) {
     response.send(contenido);
 });
 
-//'/usuarios'
+app.get("/crearPartida/:nick/:num", function(request, response){
+    var nick=request.params.nick;
+    var num = parseInt(request.params.num);
+    //ojo, nick nulo o numero nulo
+    //var num=4;
+    var usr = new modelo.Usuario(nick);
+    var codigo=juego.crearPartida(num,usr);
+
+    response.send({"codigo":codigo});
+});
+
+app.get("/unirAPartida/:nick/:codigo",function(request, response){
+    var nick=request.params.nick;
+    var codigo= request.params.codigo;
+    var res = juego.unirAPartida(codigo,nick);
+    response.send({"res":res});
+});
 
 server.listen(app.get('port'), function () {
     console.log('Node esta escuchando en el puerto', app.get('port'));

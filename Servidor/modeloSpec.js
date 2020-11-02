@@ -221,7 +221,7 @@ describe("El juego del impostor", function () {
       for(var i in juego.partidas[codigo].usuarios){
         if (juego.partidas[codigo].usuarios[i].impostor==false){
         juego.partidas[codigo].usuarios[impostor].atacar[i];
-        };
+        }; 
       }
 
       var ganaImpostor=juego.partidas[codigo].gananImpostores();

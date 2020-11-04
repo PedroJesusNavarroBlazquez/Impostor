@@ -1,7 +1,8 @@
 function ClienteRest(){
     this.crearPartida=function(nick,num){
 		$.getJSON("/crearPartida/"+nick+"/"+num,function(data){    
-    		console.log(data);
+			console.log(data);
+			
 		});
     };   
     this.unirAPartida=function(nick,codigo){
@@ -19,11 +20,12 @@ function ClienteRest(){
     		console.log(data);
 		});
 	}
-	this.crearPartida=function(nick,num,callback){
+	/*this.crearPartida=function(nick,num,callback){
 		$.getJSON("/crearPartida/"+nick+"/"+num,function(data){    
-    		console.log(data);
+			console.log(data);
+			callback(data);
 		});
-	}
+	}*/
 }
 
 function pruebas(){

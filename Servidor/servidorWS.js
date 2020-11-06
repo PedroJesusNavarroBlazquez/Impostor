@@ -34,7 +34,18 @@ function ServidorWS(){
                 //iniciar Partida ToDo
                 //controlar si nick es el owner de la partida. (En la capa de negocio no aquí).
                 //cli.enviarATodos(socket,codigo,"partidaIniciada",fase);
+                juego.iniciarPartida(nick,codigo);
+                var fase=juego.partida[codigo].fase.nombre;
+                cli.enviarATodos(io,codigo,"partidaIniciada", fase);
             })
+            socket.on('listarPartidasDisponibles',function(){
+                var lista=juego.listarPartidasDisponibles();
+                console.log(socket,"recibirListaPartidasDisponibles",lista);
+            });
+            socket.on('listarPartidas',function(){
+                var lista=juego.listarPartidas();
+                console.log(socket,"recibirListaPartidas",lista);
+            });
 		});
     }
 }

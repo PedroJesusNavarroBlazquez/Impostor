@@ -4,10 +4,13 @@ var app = express();
 var server = require('http').Server(app);
 var bodyParser = require("body-parser");
 var io = require('socket.io').listen(server);
+//io esta vinculado a la referencia server que se refiere al http.
 
+//dependencias
 var modelo=require("./Servidor/modelo.js");
 var wss=require("./Servidor/servidorWS.js");
 
+//creando la instanciade web socket
 var servidorWS=new wss.ServidorWS();
 
 app.set('port', process.env.PORT || 5000);
@@ -55,4 +58,5 @@ server.listen(app.get('port'), function () {
 //      console.log('Node app is running on port', app.get('port'));
 // });
 
+//Lanzamos el servidor de websocket, pasandole io que es el modulo de socket.io y también juego.
 servidorWS.lanzarSocketSrv(io,juego);

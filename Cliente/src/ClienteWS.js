@@ -58,11 +58,15 @@ function ClienteWS(){
         this.socket.on('partidaCreada',function(data){
             cli.codigo=data.codigo;
             console.log(data);
-            //pruebasWS();
+            if(data.codigo!="fallo"){
+                cw.mostrarEsperandoRival();
+            }
         })
         this.socket.on('unidoAPartida',function(data){
             cli.codigo=data.codigo;
             console.log(data);
+            cw.mostrarEsperandoRival();
+
         });
         this.socket.on('nuevoJugador',function(nick){
             console.log(nick+ " se une a la partida");
@@ -73,6 +77,7 @@ function ClienteWS(){
         })
         this.socket.on('recibirListaPartidasDisponibles',function(lista){
             console.log(lista);
+            cw.mostrarUnirAPartida(lista);
         })
         this.socket.on('recibirListaPartidas',function(lista){
             console.log(lista);

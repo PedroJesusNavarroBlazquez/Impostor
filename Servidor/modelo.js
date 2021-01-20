@@ -285,6 +285,14 @@ function Partida(num,owner, codigo, juego){
 		}
 		return lista;
 	}
+	this.listaJugadores=function(){
+        var lista=[]
+        for (var key in this.usuarios) {
+                lista.push ({"nick":this.usuarios[key].nick});
+            }
+    
+        return lista
+    }
 	this.agregarUsuario(owner);
 }
 
@@ -396,11 +404,9 @@ function Usuario(nick){
 		}
 	}
 	this.atacar=function(inocente){
-		if (this.impostor){
+		if (this.impostor && !(this.nick==inocente)){
 			this.partida.atacar(inocente);
-		}else {
-            console.log("un solo ciudadano no puede atacar")
-        }
+		}
 	}
 	this.esAtacado=function(){
 		this.estado.esAtacado(this);

@@ -30,7 +30,7 @@ describe("El juego del impostor", function () {
       codigo = juego.crearPartida(4, nick);//usr.crearPartida(4);
     });
 
-    /*it("se comprueba la partida", function () {
+    it("se comprueba la partida", function () {
       expect(codigo).not.toBe(undefined);
       expect(juego.partidas[codigo].nickOwner).toEqual(nick);
       expect(juego.partidas[codigo].maximo).toEqual(4);
@@ -233,7 +233,7 @@ describe("El juego del impostor", function () {
 
 
 
-   /* it("Los participantes votan skip y no muere nadie", function () {
+    it("Los participantes votan skip y no muere nadie", function () {
       juego.unirAPartida(codigo, "ana");
       var num = Object.keys(juego.partidas[codigo].usuarios).length;
       expect(num).toEqual(2);

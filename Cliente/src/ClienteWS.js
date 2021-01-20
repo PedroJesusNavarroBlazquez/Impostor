@@ -8,7 +8,6 @@ function ClienteWS(){
 
     //Socket.IO is a library that enables real-time, bidirectional and event-based communication 
     //between the browser and the server.
-    //
     this.ini=function(){
         this.socket=io.connect();
         //El metodo lanzarSocketSrv sirve para que el cliente pueda escuchar a posibles llamadas del servidor. 

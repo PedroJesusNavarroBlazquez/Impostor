@@ -78,7 +78,7 @@ describe("El juego del impostor", function () {
       expect(juego.partidas[codigo].fase.nombre).toEqual("jugando");
     })
 
-    it("Pepe abandona la partida", function () {
+    /*it("Pepe abandona la partida", function () {
       juego.unirAPartida(codigo, "ana");
       var num = Object.keys(juego.partidas[codigo].usuarios).length;
       expect(num).toEqual(2);
@@ -117,7 +117,7 @@ describe("El juego del impostor", function () {
       juego.partidas[codigo].usuarios["tomas"].abandonarpartida();
       juego.partidas[codigo].usuarios["Pepe"].abandonarpartida();
       expect(juego.partidas[codigo].numeroJugadores()).toEqual(0);
-    })
+    })*/
 
     it("Tareas asignadas a los usuarios", function () {
       juego.unirAPartida(codigo, "ana");

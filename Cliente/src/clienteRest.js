@@ -20,26 +20,3 @@ function ClienteRest(){
 		});
 	}
 }
-/*
-function pruebas(){
-	var codigo=undefined;
-	rest.crearPartida("pepe",3,function(data){
-		codigo=data.codigo;		
-	});
-	rest.crearPartida("pepe",4,function(data){
-		codigo=data.codigo;
-		rest.unirAPartida("juan",codigo);
-		rest.unirAPartida("juani",codigo);
-		rest.unirAPartida("juana",codigo);
-		rest.unirAPartida("juanma",codigo);
-	});
-	rest.crearPartida("pepe",5,function(data){
-		codigo=data.codigo;
-		rest.unirAPartida("juan",codigo);
-		rest.unirAPartida("juani",codigo);
-		rest.unirAPartida("juana",codigo);
-		rest.unirAPartida("juanma",codigo);
-	});
-	
-//agregar otras partidas de 6, 7… hasta 10 jugadores
-}*/

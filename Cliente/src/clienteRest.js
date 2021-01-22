@@ -1,10 +1,10 @@
 function ClienteRest(){
-    this.crearPartida=function(nick,num){
+	this.crearPartida=function(nick,num){
 		$.getJSON("/crearPartida/"+nick+"/"+num,function(data){    
-			console.log(data);
+    		console.log(data);
 		});
-    };   
-    this.unirAPartida=function(nick,codigo){
+	}
+	this.unirAPartida=function(nick,codigo){
 		$.getJSON("/unirAPartida/"+nick+"/"+codigo,function(data){    
     		console.log(data);
 		});
@@ -19,14 +19,8 @@ function ClienteRest(){
     		console.log(data);
 		});
 	}
-	/*this.crearPartida=function(nick,num,callback){
-		$.getJSON("/crearPartida/"+nick+"/"+num,function(data){    
-			console.log(data);
-			callback(data);
-		});
-	}*/
 }
-
+/*
 function pruebas(){
 	var codigo=undefined;
 	rest.crearPartida("pepe",3,function(data){
@@ -48,4 +42,4 @@ function pruebas(){
 	});
 	
 //agregar otras partidas de 6, 7… hasta 10 jugadores
-}
+}*/

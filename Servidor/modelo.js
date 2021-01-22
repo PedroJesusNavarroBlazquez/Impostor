@@ -131,7 +131,6 @@ function Partida(num,owner, codigo, juego){
 		this.asignarEncargos();
 		this.asignarImpostor();	
 		this.fase=new Jugando();
-		console.log("partida "+this.codigo+" estado "+this.fase.nombre);
 	}
 	this.abandonarpartida=function(nick){
 		this.fase.abandonarpartida(nick,this);

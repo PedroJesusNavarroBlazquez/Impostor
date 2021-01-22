@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 var juego=new modelo.Juego();
 
 app.get('/', function (request, response) {
-    var contenido = fs.readFileSync(__dirname + "/cliente/index.html"); 
+    var contenido = fs.readFileSync(__dirname + "/Cliente/index.html"); 
     response.setHeader("Content-type", "text/html");
     response.send(contenido);
 });

@@ -487,7 +487,7 @@ function lanzarJugador(numJugador) {
   //   .sprite(spawnPoint.x, spawnPoint.y, "atlas", "misa-front")
   //   .setSize(30, 40)
   //   .setOffset(0, 24);
-
+  //
   player = crear.physics.add.sprite(spawnPoint.x, spawnPoint.y, "varios", recursos[numJugador].id);
 
   //player2 = crear.physics.add.sprite(spawnPoint.x+15, spawnPoint.y,"varios",3);

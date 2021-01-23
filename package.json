@@ -4,7 +4,6 @@
   "description": "trabajo de procesos",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
     "test": "./node_modules/.bin/jasmine-node servidor"
   },
   "repository": {
@@ -29,5 +28,4 @@
     "bufferutil": "^4.0.2",
     "utf-8-validate": "^5.0.3"
   }
-  
 }

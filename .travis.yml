@@ -8,3 +8,4 @@ install:
   - npm i -g jasmine-node
 script:
   - npm test
+  - npm start

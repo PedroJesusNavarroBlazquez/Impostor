@@ -24,6 +24,9 @@ function ClienteWS(){
 	this.listaPartidas=function(){
 		this.socket.emit("listaPartidas");
 	}
+	this.estoyDentro=function(){
+		this.socket.emit("estoyDentro",this.nick,this.codigo);
+	}
 	this.lanzarVotacion=function(){
 		this.socket.emit("lanzarVotacion",this.nick,this.codigo);
 	}
@@ -100,6 +103,10 @@ function ClienteWS(){
 		this.socket.on("muereInocente",function(data){
 			console.log(data);
 		});
+		this.socket.on('dibujarRemoto',function(data){
+			console.log(data);
+			lanzarJugadorRemoto(datos.nick, datos.numJugador);
+		})
 	}
 
 	this.ini();

@@ -5,6 +5,6 @@ node_js:
   - "4.0"
 install:
   - npm install -g node-gyp
+  - npm i -g jasmine-node
 script:
-  - npm start
   - npm test

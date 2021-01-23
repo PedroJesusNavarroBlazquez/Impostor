@@ -7,5 +7,4 @@ install:
   - npm install -g node-gyp
   - npm i -g jasmine-node
 script:
-  - npm start
   - npm test

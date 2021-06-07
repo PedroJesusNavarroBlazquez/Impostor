@@ -5,8 +5,8 @@ var server = require('http').Server(app);
 var bodyParser = require("body-parser");
 var io = require('socket.io').listen(server);
 
-var modelo=require("./Servidor/modelo.js");
-var wss=require("./Servidor/servidorWS.js");
+var modelo=require("./servidor/modelo.js");
+var wss=require("./servidor/servidorWS.js");
 
 var servidorWS=new wss.ServidorWS();
 

@@ -8,4 +8,3 @@ install:
   - npm install body-parser
 script:
   - npm test
-  - npm start

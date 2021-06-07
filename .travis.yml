@@ -4,7 +4,5 @@ node_js:
 install:
   - npm install express
   - npm install -g node-gyp
-  - npm install body-parser
 script:
   - npm test
-  - npm start

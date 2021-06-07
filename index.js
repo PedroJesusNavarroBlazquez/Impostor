@@ -10,8 +10,6 @@ var wss=require("./Servidor/servidorWS.js");
 
 var servidorWS=new wss.ServidorWS();
 
-//var min = process.argv.slice(2);
-
 app.set('port', process.env.PORT || 5000);
 
 app.use(express.static(__dirname + '/'));

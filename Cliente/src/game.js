@@ -37,7 +37,8 @@ let camera;
 let worldLayer;
 let map;
 let crear;
-let recursos = [{ id: 0, nombre: "ana" }, { id: 3, nombre: "pepe" }, { id: 6, nombre: "tom" }, { id: 8, nombre: "rayo" }];
+var spawnPoint;
+let recursos = [{ frame: 0, nombre: "ana" }, { frame: 3, nombre: "pepe" }, { frame: 6, nombre: "tom" }, { frame: 8, nombre: "rayo" }];
 
 function preload() {
   this.load.image("tiles", "cliente/assets/tilesets/tuxmon-sample-32px-extruded.png");
@@ -76,7 +77,7 @@ function create() {
 
   // Object layers in Tiled let you embed extra info into a map - like a spawn point or custom
   // collision shapes. In the tmx file, there's an object layer with a point named "Spawn Point"
-  const spawnPoint = map.findObject("Objects", obj => obj.name === "Spawn Point");
+  spawnPoint = map.findObject("Objects", obj => obj.name === "Spawn Point");
 
   // Create a sprite with physics enabled via the physics system. The image used for the sprite has
   // a bit of whitespace, so I'm using setSize & setOffset to control the size of the player's body.
@@ -87,11 +88,11 @@ function create() {
 
   // // Watch the player and worldLayer for collisions, for the duration of the scene:
   //this.physics.add.collider(player, worldLayer);
-
+ 
   const anims = crear.anims;
   anims.create({
     key: "pedro-left-walk",
-    frames: anims.generateFrameNames("gabe", {
+    frames: anims.generateFrameNames("varios", {
       //prefix: "misa-left-walk.",
       start: 12,
       end: 14,
@@ -102,7 +103,7 @@ function create() {
   });
   anims.create({
     key: "pedro-right-walk",
-    frames: anims.generateFrameNames("gabe", {
+    frames: anims.generateFrameNames("varios", {
       //prefix: "misa-left-walk.",
       start: 24,
       end: 26,
@@ -113,7 +114,7 @@ function create() {
   });
   anims.create({
     key: "pedro-front-walk",
-    frames: anims.generateFrameNames("gabe", {
+    frames: anims.generateFrameNames("varios", {
       //prefix: "misa-left-walk.",
       start: 0,
       end: 2,
@@ -124,7 +125,7 @@ function create() {
   });
   anims.create({
     key: "pedro-back-walk",
-    frames: anims.generateFrameNames("gabe", {
+    frames: anims.generateFrameNames("varios", {
       //prefix: "misa-left-walk.",
       start: 36,
       end: 38,
@@ -450,7 +451,7 @@ function create() {
   // camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
   cursors = crear.input.keyboard.createCursorKeys();
-  lanzarJugador(ws.numJugador);
+  lanzarJugador(spawnPoint,1);
   ws.estoyDentro();
 
   // Help text that has a "fixed" position on the screen
@@ -482,13 +483,13 @@ function create() {
   // });
 }
 
-function lanzarJugador(numJugador) {
+function lanzarJugador(spawnPoint,numJugador) {
   // player = crear.physics.add
   //   .sprite(spawnPoint.x, spawnPoint.y, "atlas", "misa-front")
   //   .setSize(30, 40)
   //   .setOffset(0, 24);
   //
-  player = crear.physics.add.sprite(spawnPoint.x, spawnPoint.y, "varios", recursos[numJugador].id);
+  player = crear.physics.add.sprite(spawnPoint.x, spawnPoint.y, "varios", recursos[numJugador].frame);
 
   //player2 = crear.physics.add.sprite(spawnPoint.x+15, spawnPoint.y,"varios",3);
 

@@ -96,7 +96,7 @@ function Juego(){
 		return this.partidas[codigo].obtenerListaJugadores();
 	}
 }
-
+ 
 function Partida(num,owner,codigo,juego){
 	this.maximo=num;
 	this.nickOwner=owner;
@@ -315,7 +315,7 @@ function Inicial(){
 		// }		
 	}
 	this.iniciarPartida=function(partida){
-		console.log("Faltan jugadores para poder iniciar la partida.");
+		console.log("Faltan jugadores para poder iniciar la partida. ");
 	}
 	this.abandonarPartida=function(nick,partida){
 		partida.puedeAbandonarPartida(nick);

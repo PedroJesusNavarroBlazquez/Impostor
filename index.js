@@ -3,12 +3,14 @@ var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var bodyParser = require("body-parser");
-
-var modelo=require("./servidor/modelo.js");
 var io = require('socket.io').listen(server);
-var wss=require("./servidor/servidorWS.js");
+
+var modelo=require("./Servidor/modelo.js");
+var wss=require("./Servidor/servidorWS.js");
 
 var servidorWS=new wss.ServidorWS();
+
+//var min = process.argv.slice(2);
 
 app.set('port', process.env.PORT || 5000);
 

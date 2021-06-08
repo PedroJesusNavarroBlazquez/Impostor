@@ -5,21 +5,21 @@ var server = require('http').Server(app);
 var bodyParser = require("body-parser");
 var io = require('socket.io').listen(server);
 
-var modelo=require("./Servidor/modelo.js");
-var wss=require("./Servidor/servidorWS.js");
+var modelo=require("./servidor/modelo.js");
+var wss=require("./servidor/servidorWS.js");
 
 var servidorWS=new wss.ServidorWS();
 
 app.set('port', process.env.PORT || 5000);
 
-//app.use(express.static(__dirname + '/'));
+app.use(express.static(__dirname + '/'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 var juego=new modelo.Juego();
 
 app.get('/', function (request, response) {
-    var contenido = fs.readFileSync(/*__dirname + */"./Cliente/index.html");   
+    var contenido = fs.readFileSync(__dirname +"/cliente/index.html");   
     response.setHeader("Content-type", "text/html");
     response.send(contenido);    
 });

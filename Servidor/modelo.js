@@ -76,6 +76,9 @@ function Juego(min, test) {
 			this.partidas[codigo].iniciarPartida();
 		}
 	}
+	this.abandonarPartida = function (nick, codigo) {
+		this.partidas[codigo].abandonarPartida(nick);
+	}
 	this.lanzarVotacion = function (nick, codigo) {
 		var usr = this.partidas[codigo].usuarios[nick];
 		usr.lanzarVotacion();
@@ -107,6 +110,9 @@ function Juego(min, test) {
 	this.realizarTarea = function (nick, codigo) {
 		this.partidas[codigo].realizarTarea(nick);
 	}
+	this.obtenerNumJugador=function(nick,codigo){
+        return this.partidas[codigo].usuarios[nick].numJugador;
+    }
 	if (test == "test") {
 		console.log("No nos conectamos" + test);
 	} else {
@@ -256,6 +262,8 @@ function Partida(num, owner, codigo, juego) {
 		this.fase.votar(sospechoso, this)
 	}
 	this.puedeVotar = function (sospechoso) {
+		console.log(this.usuarios[sospechoso]);
+		console.log(this.usuarios[sospechoso]);
 		this.usuarios[sospechoso].esVotado();
 		this.comprobarVotacion();
 	}
@@ -375,6 +383,9 @@ function Partida(num, owner, codigo, juego) {
 	this.obtenerPercentTarea = function (nick) {
 		return this.usuarios[nick].obtenerPercentTarea();
 	}
+	this.estadoVivo=function(nick){
+        return this.usuarios[nick].estadoVivo();
+    }
 	this.obtenerPercentGlobal = function () {
 		var total = 0;
 		for (var key in this.usuarios) {
@@ -406,6 +417,7 @@ function Inicial() {
 	}
 	this.atacar = function (inocente) { }
 	this.lanzarVotacion = function () { }
+	this.votar=function(sospechoso,partida){}
 	this.realizarTarea = function () { }
 }
 
@@ -433,6 +445,7 @@ function Completado() {
 	}
 	this.atacar = function (inocente) { }
 	this.lanzarVotacion = function () { }
+	this.votar=function(sospechoso,partida){}
 	this.realizarTarea = function () { }
 }
 
@@ -467,6 +480,7 @@ function Votacion() {
 	this.atacar = function (inocente) { }
 	this.lanzarVotacion = function () { }
 	this.votar = function (sospechoso, partida) {
+		console.log(sospechoso);
 		partida.puedeVotar(sospechoso);
 	}
 	this.realizarTarea = function () { }
@@ -479,11 +493,10 @@ function Final() {
 	}
 	this.iniciarPartida = function (partida) {
 	}
-	this.abandonarPartida = function (nick, partida) {
-		//esto es absurdo (salvo para Javier)
-	}
+	this.abandonarPartida = function (nick, partida) {}
 	this.atacar = function (inocente) { }
 	this.lanzarVotacion = function () { }
+	this.votar=function(sospechoso,partida){}
 	this.realizarTarea = function () { }
 }
 

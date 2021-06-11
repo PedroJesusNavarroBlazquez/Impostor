@@ -4,12 +4,9 @@ var app = express();
 var server = require('http').Server(app);
 var bodyParser = require("body-parser");
 var io = require('socket.io').listen(server);
-
 var modelo=require("./servidor/modelo.js");
 var wss=require("./servidor/servidorWS.js");
-
 var servidorWS=new wss.ServidorWS();
-
 var min = process.argv.slice(2);
 var test = process.argv.slice(3);
 

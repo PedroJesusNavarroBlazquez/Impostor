@@ -23,17 +23,126 @@
 	</style>
 </head>
 
+
+<div id="cabecera">
+	<header>
+		<style>
+			.jumbotron {
+			  background-color: #3373FF; 
+			  color: #ffffff;
+			}
+			</style>
+			
+			<body>
+			  <div class="jumbotron text-center">
+				<h1>EL IMPOSTOR</h1>
+				<p>Pedro Navarro</p>
+			  </div>
+	
+			</body>
+	</header><!-- /header -->
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<div id="mostraNick">	</div>
+			<div id="mostrarCodigo">	</div>
+		</div>
+		<div class="col-sm-2">
+			<div id="Abandonar">	</div>
+		</div>
+		<div class="col-sm-1">
+			<div id="comoJugar">	</div>
+		</div>
+			
+	</div>
+	<hr noshade="noshade" />
+	<div class="row">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-4">
+			<div id="crearPartida">	</div>
+			<div id="esperando">	</div>
+		</div>
+		<div class="col-sm-4">
+			<div id="listaPartidas">	</div>
+			<div id="listaJugadores">	</div>
+		</div>
+		<div class="col-sm-2">
+		</div>
+	</div>
+	<div id="iniciarPartida">	</div>
+</div>
+<div class="row">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-7">
+		<div id="game-container"></div>
+	</div>
+	<div class="col-sm-4">
+		<div id="informacion">	</div>
+		<div id="informacionGlobal">	</div>
+		
+	</div>
+</div>
+<div class="modal" id="modalGeneral" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title">El laberinto del impostor</h5>
+		</div>
+		<div class="modal-body" id="contenidoModal">
+		  
+		</div>
+		<div class="modal-footer" id="pie" >
+		</div>
+	  </div>
+	</div>
+</div>
+	
+</div>
+<script>
+	var rest=new ClienteRest();
+	var ws=new ClienteWS();
+	var cw=new ControlWeb($);
+	cw.mostrarCrearPartida(4);
+	ws.listaPartidasDisponibles();
+</script>
+</body>
+</html>
+</div>
+
+<!--
 <body>
+	<header>
+		<style>
+			.jumbotron {
+				background-color: #3373FF;
+				color: #ffffff;
+			}
+		</style>
+
+		<body>
+			<div class="jumbotron text-center">
+				<h1>EL IMPOSTOR</h1>
+				<p>Pedro Navarro</p>
+			</div>
+
+		</body>
+	</header>
+
 	<div class="container">
 		<h3>Impostor App</h3>
 		<div class="row">
 			<div class="col-sm-6">
 				<div id="crearPartida"></div>
 				<div id="esperando"></div>
+				
 			</div>
 			<div class="col-sm-6">
+				
 				<div id="listaPartidas"></div>
 				<div id="listaEsperando"></div>
+				<div id="Abandonar"></div>
+				<div id="esperando">	</div>
 			</div>
 			<div class="row">
 				<div id="game-container"></div>
@@ -51,7 +160,7 @@
 					<div class="modal-body" id="contenidoModal">
 					</div>
 					<div class="modal-footer" id="pie">
-						<!--<button type="button" class="btn btn-primary">Save changes</button>-->
+
 					</div>
 				</div>
 			</div>
@@ -69,3 +178,4 @@
 </body>
 
 </html>
+-->

@@ -1,4 +1,5 @@
 function ClienteWS() {
+	var cw=new ControlWeb($);
 	this.socket = undefined;
 	this.nick = undefined;
 	this.codigo = undefined;
@@ -28,6 +29,9 @@ function ClienteWS() {
 	this.listaPartidas = function () {
 		this.socket.emit("listaPartidas");
 	}
+	this.abandonarPartida=function(){
+        this.socket.emit("abandonarPartida",this.nick,this.codigo)//,nick,codigo);//{"nick":nick, "codigo":codigo}
+    }
 	this.estoyDentro = function () {
 		this.socket.emit("estoyDentro", this.nick, this.codigo);
 	}
@@ -89,8 +93,10 @@ function ClienteWS() {
 				cli.obtenerEncargo();
 				cw.limpiar();
 				lanzarJuego();
+				cw.mostrarAbandonarPartida();
 			}
 		}); 
+
 		this.socket.on('recibirListaPartidasDisponibles', function (lista) {
 			console.log(lista);
 			//cw.mostrarUnirAPartida(lista);
@@ -114,16 +120,29 @@ function ClienteWS() {
 			mover(datos);
 		})
 		this.socket.on("votacion", function (lista) {
-			console.log(vista);
+			console.log(lista);
 			cw.mostrarModalVotacion(lista);
 		});
-		this.socket.on("finalVotacion",function(data){
+	/*	this.socket.on("finalVotacion",function(data){
 			console.log(data);
 			//cw.cerrarModal()
 			$('#modalGeneral').modal('toggle');
 			//mostrar otro modal
 			cw.mostrarModalSimple(data.elegido);
-		});
+		});*/
+        this.socket.on('finalVotacion', function(data){
+            console.log(data);
+            //cw.cerrarModal()
+            $('#modalGeneral').modal('toggle');
+            //cw.mostrarInfoVotacion
+            console.log("muere " + data.elegido);
+            if(cli.nick==data.elegido){
+                cli.estado="muerto"
+            }
+            dibujarMuereInocente(data.elegido)
+            cw.mostrarModalSimple(data.elegido);
+        });
+
 		this.socket.on("haVotado", function (data) {
 			console.log(data);
 			//actualizar la lista
@@ -138,6 +157,7 @@ function ClienteWS() {
 				//crearColision();
 			}
 		});
+
 		this.socket.on("final",function(data){
 			console.log(data);
 			finPartida(data);
@@ -158,6 +178,31 @@ function ClienteWS() {
 				ataquesOn=true;
 			}
 		});
+
+		this.socket.on("abandono", function(data){
+            console.log("abandona " + data);
+            if(cli.nick==data.nick){
+                cli.estado="muerto"
+            }
+            dibujarMuereInocente(data.nick)
+        });
+        this.socket.on("abandonoAlPrincipio", function(data){
+            console.log("abandona " + data);
+            
+            ws.listaJugadores();
+        });
+		this.socket.on("hasAbandonado", function(data){
+            console.log("abandona " + data);
+            cw.mostrarAbandono();
+        });
+		this.socket.on("aviso", function(msg){
+            console.log(msg);
+            cw.mostrarModalSimple(msg)
+        });
+        this.socket.on('esperandoAlResto', function(data){
+            console.log(data);
+            cw.mostrarEsperandoVotacion();
+        });
 	}
 
 	this.ini();
@@ -190,3 +235,10 @@ function encargos() {
 	ws3.obtenerEncargo();
 	ws4.obtenerEncargo();
 }
+
+function votar(){
+    ws.votar(ws3.nick);
+    ws2.votar(ws3.nick);
+    ws3.votar(ws3.nick);
+    ws4.votar(ws2.nick)
+}  

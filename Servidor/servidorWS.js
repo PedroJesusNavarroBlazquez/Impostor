@@ -135,6 +135,25 @@ function ServidorWS() {
 				}
 			});
 
+
+			socket.on('abandonarPartida', function(nick,codigo) {
+                juego.abandonarPartida(nick,codigo);
+                cli.enviarATodos(io,codigo,"abandono",nick)
+                var partida=juego.partidas[codigo];
+                var fase=partida.fase.nombre;
+                // juego.atacar(nick,codigo,inocente); 
+                // cli.enviarATodos(io,codigo,"muereInocente",inocente)
+                // cli.enviarRemitente(socket,"hasAtacado",fase)
+                //var global = partida.obtenerPorcentajeGlobal(nick);
+                var numImpostores=partida.numeroImpostoresVivos();
+                var numCiudadanos=partida.numeroCiudadanosVivos()
+                cli.enviarRemitente(socket,"hasAbandonado",nick)
+                //cli.enviarATodos(io,codigo,"informacionGlobal",{"global":global, "numImpostores":numImpostores, "numCiudadanos":numCiudadanos, "fase":fase})
+
+                if(fase=="final"){
+                    cli.enviarATodos(io,codigo,"final","ganan impostores")
+                }
+            });
 		});
 	}
 
